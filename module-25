@@ -1,0 +1,26 @@
+#Явное ожидание проверка карточки на страницы все питомцы
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from  selenium import webdriver
+
+#Явное ожидание проверка карточки на страницы все питомцы
+driver = webdriver.Chrome('C:\hsp\chromedriver_92.exe')
+driver.get('https://petfriends1.herokuapp.com/all_pets')
+element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.class, "card")))
+
+
+#Неявное ожидание проверка карточки на страницы мои питомцы
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+driver.implicitly_wait(10)
+driver.get("https://petfriends1.herokuapp.com/my_pets")
+myDynamicElement = driver.find_element_by_xpath('//tbody/tr/th/img')
+myDynamicElement = driver.find_element_by_xpath('//tbody/tr/td[1]')
+myDynamicElement = driver.find_element_by_xpath('//tbody/tr/td[2]')
+myDynamicElement = driver.find_element_by_xpath('//tbody/tr/td[3]')
+
+#python -m pytest -v --driver Chrome  name_file.py - запуск программы
+
+
